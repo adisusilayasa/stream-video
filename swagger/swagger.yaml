@@ -1,0 +1,108 @@
+openapi: 3.0.3
+info:
+  version: 1.0.0
+  title: Your API Documentation
+  description: API documentation for your ExpressJS API with TypeScript and MongoDB integration
+servers:
+  - url: http://localhost:3000
+paths:
+  /api/videos/thumbnail-list:
+    get:
+      summary: Get the list of video thumbnails
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    videoID:
+                      type: string
+                    url:
+                      type: string
+  /api/products/list:
+    get:
+      summary: Get the list of products
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+  /api/comments/list/{videoID}:
+    get:
+      summary: Get the list of comments for a specific video
+      parameters:
+        - name: videoID
+          in: path
+          required: true
+          description: ID of the video to retrieve comments for
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Comment'
+    post:
+      summary: Submit a comment for a video
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubmitCommentPayload'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        productID:
+          type: string
+        link:
+          type: string
+        title:
+          type: string
+        price:
+          type: number
+    Comment:
+      type: object
+      properties:
+        username:
+          type: string
+        comment:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        videoID:
+          type: string
+    SubmitCommentPayload:
+      type: object
+      properties:
+        username:
+          type: string
+        comment:
+          type: string
+        videoID:
+          type: string
