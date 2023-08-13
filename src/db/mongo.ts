@@ -4,7 +4,7 @@ import mongoose from 'mongoose';
 
 export const connectToDB = async () => {
     try {
-        await mongoose.connect('mongodb://localhost:27017/stream_video', {
+        await mongoose.connect(String(process.env.MONGODB_URI), {
         });
         console.log('Connected to MongoDB');
     } catch (err) {

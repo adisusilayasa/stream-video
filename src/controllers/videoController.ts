@@ -7,8 +7,9 @@ export const getVideoThumbnailList = async (req: Request, res: Response) => {
 
         const videos = await Video.find();
         const thumbnails = videos.map((video) => ({
-            videoID: video.videoID,
-            url: video.url,
+            videoID: video.videoId,
+            videoDesc: video.videoDesc,
+            videoTitle: video.videoTitle,
         }));
         res.json(thumbnails);
     } catch (err) {
