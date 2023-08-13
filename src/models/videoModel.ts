@@ -1,16 +1,22 @@
-// src/models/videoModel.ts
-import mongoose, { Document, Schema } from 'mongoose';
+// models/VideoModel.ts
 
-export interface Video {
-    videoID: string;
-    url: string;
+import mongoose, { Schema } from 'mongoose';
+import { Document } from 'mongoose';
+
+interface IVideo extends Document {
+    videoId: string;
+    videoDesc: string;
+    videoTitle: string;
 }
+const videoSchema = new Schema<IVideo>(
+    {
+        videoId: { type: String, required: true },
+        videoDesc: { type: String, required: true },
+        videoTitle: { type: String, required: true }
+    },
+    { timestamps: true }
+);
 
-export interface VideoDocument extends Video, Document { }
+const VideoModel = mongoose.model<IVideo>('Video', videoSchema);
 
-const videoSchema = new Schema<Video>({
-    videoID: { type: String, required: true, unique: true },
-    url: { type: String, required: true },
-});
-
-export default mongoose.model<VideoDocument>('Video', videoSchema);
+export default VideoModel;
