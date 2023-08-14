@@ -25,7 +25,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node src/server.ts",
+    "start": "node --loader ts-node/esm src/server.ts",
     "dev": "nodemon --exec ts-node src/server.ts",
     "build": "tsc",
     "prestart": "npm run build",
