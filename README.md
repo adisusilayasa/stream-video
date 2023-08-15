@@ -1,5 +1,7 @@
 ## Project Documentation
-
+### ENV
+MONGODB_URI=
+PORT=
 ### API List
 
 #### 1. Video Thumbnail List
