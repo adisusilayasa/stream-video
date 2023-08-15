@@ -1,9 +1,13 @@
 {
     "compilerOptions": {
-        "target": "ES2018",
-        "module": "commonjs",
-        "outDir": "dist",
-        "strict": true,
-        "esModuleInterop": true
+      "allowJs": true,
+      "esModuleInterop": true,
+      "isolatedModules": true,
+      "module": "ESNext",
+      "moduleResolution": "bundler",
+      "outDir": "dist",
+      "paths": { "~/*": ["./src/*"] },
+      "target": "ESNext"
     }
-}
+  }
+  

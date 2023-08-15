@@ -1,4 +1,22 @@
 {
+  "name": "stream_api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "engines": {
+    "node": ">=18.11",
+    "pnpm": ">=7.27"
+  },
+  "scripts": {
+    "dev": "pnpm /dev:.*/",
+    "dev:build": "esbuild ./src/server.ts --bundle --outdir=dist --packages=external --platform=node --sourcemap --watch",
+    "dev:run": "node --inspect --no-warnings --loader ./dist/server.js --watch dist/src",
+    "build": "esbuild ./src/server.ts --bundle --minify --outdir=dist --packages=external --platform=node",
+    "start": "node dist/server.js"
+  },
+  "keywords": [],
+  "description": "",
+  "author": "",
+  "license": "ISC",
   "dependencies": {
     "@types/express": "^4.17.17",
     "@types/faker": "^6.6.9",
@@ -10,6 +28,7 @@
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
+    "esbuild": "^0.19.2",
     "express": "^4.18.2",
     "express-async-handler": "^1.2.0",
     "faker": "^6.6.6",
@@ -21,19 +40,6 @@
     "ws": "^8.13.0",
     "yamljs": "^0.3.0"
   },
-  "name": "stream_api",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "start": "node --loader ts-node/esm src/server.ts",
-    "dev": "nodemon --exec ts-node src/server.ts",
-    "build": "tsc",
-    "prestart": "npm run build",
-    "test": "echo \"No tests specified\" && exit 0"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "@types/cors": "^2.8.13",
     "@types/node": "^20.4.5",
@@ -42,6 +48,5 @@
     "nodemon": "^3.0.1",
     "ts-node": "^10.9.1",
     "typescript": "^5.1.6"
-  },
-  "description": ""
+  }
 }
