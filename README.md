@@ -1,7 +1,7 @@
 ## Project Documentation
-### ENV
-MONGODB_URI=
-PORT=
+### ENV EXAMPLE
+- MONGODB_URI= XXX
+- PORT= XXX
 ### API List
 
 #### 1. Video Thumbnail List
